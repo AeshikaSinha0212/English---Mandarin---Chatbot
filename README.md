@@ -32,6 +32,32 @@ python Chatbot.py
 }
 ```
 ```
+---
+
+### 💻 Full Code: `Chatbot.py`
+
+```python
+import json
+
+with open('phrases.json', 'r', encoding='utf-8') as Myfile:
+    data = json.load(Myfile)
+
+print("\nHii!! Most Welcome to Aeshika's Mandarin Chatbot")
+print("You can type one of these English phrases:")
+for phrase in data["phrases"]:
+    print("-", phrase["English"])
+
+user_input = input("\nType something in English: ").strip().lower()
+found = False
+
+for phrase in data["phrases"]:
+    if phrase["English"].strip().lower() == user_input:
+        print("Pinyin:", phrase["Pinyin"])
+        found = True
+        break
+
+if not found:
+    print("I am not able to process it. Try a valid English phrase.")
 
 ---
 Made with ❤️ by Aeshika (Aeshika's Pinyin  Chatbot)
